@@ -2,17 +2,6 @@
 
 using namespace std;
 
-int getIndex(vector<int> arr, int n)
-{
-    auto it = find(arr.begin(), arr.end(), n);
-    if (it != arr.end())
-    {
-        int index = it - arr.begin();
-        return index;
-    }
-    return -1;
-}
-
 vector<int> pairSum(vector<int> arr, int target)
 {
     unordered_set<int> s;
@@ -20,14 +9,9 @@ vector<int> pairSum(vector<int> arr, int target)
     for (int i = 0; i < arr.size(); i++)
     {
         int x = target - arr[i];
-
         if (s.find(x) != s.end())
         {
-            if (getIndex(arr, x))
-            {
-                int index = getIndex(arr, x);
-                result.push_back(index);
-            }
+            result.push_back(x);
             result.push_back(i);
             return result;
         }
