@@ -20,7 +20,6 @@ bool outOfOrder(vector<int> nums, int i)
 
 pair<int, int> subnumsaySort(vector<int> nums)
 {
-
     int smallest = INT_MAX;
     int largest = INT_MIN;
 
@@ -55,7 +54,7 @@ pair<int, int> subnumsaySort(vector<int> nums)
 
 int main()
 {
-    vector<int> nums{1, 2, 3, 4, 5, 8, 7, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17};
+    vector<int> nums{2, 1};
 
     pair<int, int> result = subnumsaySort(nums);
 }
