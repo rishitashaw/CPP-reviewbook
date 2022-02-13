@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string unquie_substring(string str)
+int unquie_substring(string str)
 {
     int i = 0;
     int j = 0;
@@ -11,6 +11,9 @@ string unquie_substring(string str)
     int start_window = -1;
 
     unordered_map<char, int> m;
+
+    if (str.length() == 0)
+        return 0;
 
     while (j < str.length())
     {
@@ -31,13 +34,14 @@ string unquie_substring(string str)
             start_window = i;
         }
     }
-    return str.substr(start_window, max_window_len);
+    string result = str.substr(start_window, max_window_len);
+    return result.size();
 }
 
 int main()
 {
     string str = "prateekbhaiya";
 
-    string result = unquie_substring(str);
+    int result = unquie_substring(str);
     cout << result << endl;
 }
