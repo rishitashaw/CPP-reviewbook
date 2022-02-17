@@ -13,7 +13,7 @@ int inversion(vector<int> &array, int s, int e)
 
     while (i <= m and j <= e)
     {
-        if (array[i] < array[j])
+        if (array[i] < 2 * array[j])
         {
             temp.push_back(array[i]);
             i++;
@@ -24,18 +24,18 @@ int inversion(vector<int> &array, int s, int e)
             temp.push_back(array[j]);
             j++;
         }
-        if (i <= m)
-        {
-            temp.push_back(array[i++]);
-        }
-        if (j <= e)
-        {
-            temp.push_back(array[j++]);
-        }
+    }
+    while (i <= m)
+    {
+        temp.push_back(array[i++]);
+    }
+    while (j <= e)
+    {
+        temp.push_back(array[j++]);
     }
 
     int k = 0;
-    for (int idx = 0; idx <= e; idx++)
+    for (int idx = s; idx <= e; idx++)
     {
         array[idx] = temp[k++];
     }
@@ -58,7 +58,7 @@ int inversion_count(vector<int> &arr, int s, int e)
 
 int main()
 {
-    vector<int> arr{0, 5, 2, 3, 1};
+    vector<int> arr{1, 3, 2, 3, 1};
     int s = 0;
     int e = arr.size() - 1;
     int result = inversion_count(arr, s, e);

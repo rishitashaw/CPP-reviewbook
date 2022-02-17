@@ -22,21 +22,20 @@ void merge(vector<int> &arr, int s, int e)
             temp.push_back(arr[j]);
             j++;
         }
-        if (i <= mid)
-        {
-            temp.push_back(arr[i++]);
-        }
-        if (j <= e)
-        {
-            temp.push_back(arr[j++]);
-        }
-        int k = 0;
-        for (int idx = 0; idx <= e; idx++)
-        {
-            arr[idx] = temp[k++];
-        }
     }
-
+    while (i <= mid)
+    {
+        temp.push_back(arr[i++]);
+    }
+    while (j <= e)
+    {
+        temp.push_back(arr[j++]);
+    }
+    int k = 0;
+    for (int idx = s; idx <= e; idx++)
+    {
+        arr[idx] = temp[k++];
+    }
     return;
 }
 
@@ -50,8 +49,7 @@ void merge_sort(vector<int> &a, int s, int e)
     merge_sort(a, s, m);
     merge_sort(a, m + 1, e);
 
-    merge(a, s, e);
-    return;
+    return merge(a, s, e);
 }
 
 int main()
