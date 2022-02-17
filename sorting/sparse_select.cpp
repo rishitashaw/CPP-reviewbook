@@ -42,11 +42,14 @@ int sparse_select(string a[], int n, string key)
         else if (a[mid] > key)
         {
             e = mid - 1;
+            break;
         }
         else
         {
             s = mid + 1;
+            break;
         }
+        break;
     }
     return -1;
 }
