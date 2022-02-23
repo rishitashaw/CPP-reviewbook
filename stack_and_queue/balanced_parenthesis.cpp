@@ -60,6 +60,7 @@ bool isBalancedParenthesis(string input)
 
 int main()
 {
-    string input = "(())";
+    string input;
+    getline(cin, input);
     cout << isBalancedParenthesis(input) << endl;
 }
