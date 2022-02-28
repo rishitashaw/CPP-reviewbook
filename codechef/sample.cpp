@@ -31,27 +31,6 @@ int main()
     cin >> tc;
     while (tc--)
     {
-        int n, num;
-        vector<int> arr;
-        cin >> n;
-        if (n <= 2)
-        {
-            break;
         }
-
-        for (int i = 0; i < n; ++i)
-        {
-            cin >> num;
-            arr.push_back(num);
-        }
-
-        vector<int> result = goodArrays(arr);
-
-        for (auto n : result)
-        {
-            cout << n << " ";
-        }
-        cout << endl;
-    }
     return 0;
 }
