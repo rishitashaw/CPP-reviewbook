@@ -1,36 +1,17 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 
-bool coprime(int a, int b)
-{
-    return (__gcd(a, b) == 1);
-}
-
-vector<int> goodArrays(vector<int> arr)
-{
-    vector<int> goodArr;
-    for (int i = 0; i < arr.size(); i++)
-    {
-        if (coprime(arr[i], arr[i + 1]))
-        {
-            arr[i] = arr[i] + 1;
-        }
-        else
-        {
-            goodArr.push_back(arr[i]);
-        }
-    }
-    return goodArr;
-}
-
 int main()
 {
-    // your code goes here
-    int tc;
-    cin >> tc;
-    while (tc--)
+    int n;
+    cin >> n;
+    if (n % 2)
     {
-        }
-    return 0;
+        cout << -1 << endl;
+    }
+
+    cout << 0 << " " << (n / 2) << endl;
+    cout << (n / 2) << " " << n + (n / 2) << endl;
+    cout << n + (n / 2) << " " << n << endl;
+    cout << n << " " << 0 << endl;
 }
