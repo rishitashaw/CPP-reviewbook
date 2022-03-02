@@ -1,17 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
+vector<int> holidays{7, 8, 14, 15, 21, 22, 28, 29};
 
 int main()
 {
-    int n;
-    cin >> n;
-    if (n % 2)
-    {
-        cout << -1 << endl;
-    }
+    int tc;
+    cin >> tc;
 
-    cout << 0 << " " << (n / 2) << endl;
-    cout << (n / 2) << " " << n + (n / 2) << endl;
-    cout << n + (n / 2) << " " << n << endl;
-    cout << n << " " << 0 << endl;
+    while (tc--)
+    {
+        int n;
+        cin >> n;
+        vector<int> array;
+        int cnt = 0;
+        for (int i = 0; i < n; i++)
+        {
+            int temp;
+            cin >> temp;
+            array.push_back(temp);
+        }
+        for (int i = 0; i < n; i++)
+        {
+            if (find(holidays.begin(), holidays.end(), array[i]) != holidays.end())
+            {
+                continue;
+            }
+            else
+            {
+                cnt++;
+            }
+        }
+        int res = holidays.size() + cnt;
+        cout << res << endl;
+    }
+    return 0;
 }

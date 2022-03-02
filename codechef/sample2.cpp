@@ -1,35 +1,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool canFormEquilateralTriangle(int n)
-{
-    float thirdSide = sqrt(n * n);
-    int x = thirdSide;
-    double temp2 = thirdSide - x;
-    if (temp2 > 0)
-    {
-        return false;
-    }
-    return true;
-}
-
 int main()
 {
 
-    int n = 4;
-    // cin >> n;
-    if (!canFormEquilateralTriangle(n))
-        return -1;
+    // int tc;
+    // cin >> tc;
+    // while (tc--)
+    // {
+    int n = 6, k = 1;
+    cin >> n, k;
+    char str[n] = "whizzy";
+    // cin.get(str, n);
+    vector<string> v;
 
-    if (n % 2)
+    for (int i = 0; i < n; i++)
     {
-        cout << -1 << endl;
-    }
+        string str1 = "";
 
-    cout << 0 << " " << (n / 2) << endl;
-    cout << (n / 2) << " " << n << endl;
-    cout << n << " " << n + (n / 2) << endl;
-    cout << n + (n / 2) << " " << 2 * n << endl;
+        if (i % k == 0)
+            v.push_back(str1);
+        str1 += str[i];
+    }
+    sort(v.begin(), v.end());
+    for (int i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << " ";
+    }
+    // }
 
     return 0;
 }
