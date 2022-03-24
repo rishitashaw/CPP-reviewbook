@@ -29,7 +29,7 @@ vector<int> searchRange(vector<int> &nums, int target)
 int main()
 {
     vector<int> nums{5, 7, 7, 8, 8, 10};
-    vector<int> result = findDuplicate(nums, 8);
+    vector<int> result = searchRange(nums, 8);
     for (auto i : result)
     {
         cout << result[i] << " ";
