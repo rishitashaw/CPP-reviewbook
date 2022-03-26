@@ -16,32 +16,40 @@ bool isPalindrom(string s)
 vector<vector<string>> partition(string s)
 {
     vector<vector<string>> result;
-    vector<string> temp;
+    vector<string> res;
+    string palindromString = "";
     for (int i = 0; i < s.length(); i++)
     {
+        palindromString.push_back(s[i]);
+        if (isPalindrom(palindromString))
+        {
+            string rest = s.substr(i + 1, s.size());
 
-        if (isPalindrom(s))
-        {
-            temp.push_back(s);
-        }
-        else
-        {
-            temp.push_back(s.substr(s.length() - 1));
-            if (s.size() == 1)
+            auto temp = partition(rest);
+            if (temp.size() == 0)
             {
-                temp.push_back({s});
-                break;
+                res.push_back({palindromString});
             }
-            s.pop_back();
-        }
 
-        sort(temp.begin(), temp.end());
-        result.push_back(temp);
+            for (auto &part : temp)
+            {
+                part.push_back(palindromString);
+                result.push_back(part);
+            }
+        }
     }
     return result;
 }
-
 int main()
 {
     string s = "aab";
+    vector<vector<string>> result = partition(s);
+    for (auto i : result)
+    {
+        for (auto j : i)
+        {
+            cout << j << " ";
+        }
+        cout << endl;
+    }
 }

@@ -8,13 +8,27 @@ vector<vector<string>> groupAnagrams(vector<string> &strs)
     for (auto s : strs)
     {
         string temp = s;
-        sort(temp.begin(), temp.end());
+        sort(s.begin(), s.end());
         mp[temp].push_back(s);
     }
     vector<vector<string>> anagrams;
-    for (auto it : mp)
+    for (auto s : mp)
     {
-        anagrams.push_back(it.second);
+        anagrams.push_back(s.second);
     }
     return anagrams;
+}
+
+int main()
+{
+    vector<string> vec{"eat", "tea", "tan", "ate", "nat", "bat"};
+    vector<vector<string>> result = groupAnagrams(vec);
+    for (int i = 0; i < result.size(); i++)
+    {
+        for (auto it : result[i])
+        {
+            cout << it << " ";
+        }
+        cout << endl;
+    }
 }
