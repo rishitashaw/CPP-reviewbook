@@ -26,21 +26,15 @@ vector<int> searchRange(vector<int> &nums, int target)
         {
             j--;
         }
+        else if (curr_front == target and curr_back != target)
+        {
+            res.push_back(j);
+            res.push_back(j);
+        }
         else
         {
             k++;
             j--;
-        }
-    }
-    if (count(nums.begin(), nums.end(), target) == 1)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            if (nums[i] == target)
-            {
-                res.push_back(i);
-                res.push_back(i);
-            }
         }
     }
     if (res.size() == 0)
