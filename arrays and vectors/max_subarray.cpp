@@ -1,20 +1,37 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-int maxSubArray(vector<int> &nums)
+int max_subarray_worst(vector<int> arr)
 {
-    int ans = 0;
-    int initial = 0;
-    int n = nums.size();
-    int j = 0;
-    int k = n - 1;
-    int current = 0;
-    while (j < k)
+    int best = 0;
+    for (int i = 0; i < arr.size(); i++)
     {
-        ans = max(accumulate(nums.begin(), nums.end(), initial), ans);
+        int sum = 0;
+        for (int j = i; j < arr.size(); j++)
+        {
+            sum += arr[j];
+            best = max(best, sum);
+        }
     }
+    return best;
+}
+
+int max_subarray_best(vector<int> arr)
+{
+    int best = 0;
+    int sum = 0;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        sum = max(arr[i], sum + arr[i]);
+        best = max(best, sum);
+    }
+    return best;
 }
 
 int main()
 {
+    vector<int> arr{-1, 2, 4, -3, 5, 2, -5, 2};
+    cout << max_subarray_worst(arr) << endl;
+    cout << max_subarray_best(arr) << endl;
 }
