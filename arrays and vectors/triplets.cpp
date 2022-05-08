@@ -36,6 +36,10 @@ vector<vector<int>> triplet(vector<int> nums)
                 j++;
             }
         }
+        if (result.size() == 0)
+        {
+            return 0;
+        }
         return result;
     }
 }
