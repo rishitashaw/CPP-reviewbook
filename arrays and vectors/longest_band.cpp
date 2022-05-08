@@ -4,32 +4,29 @@ using namespace std;
 
 int largest_band(vector<int> arr)
 {
-    int n = arr.size();
     unordered_set<int> s;
-
     int largest_band = 0;
 
-    for (auto x : arr)
+    for (auto element : arr)
     {
-        s.insert(x);
+        s.insert(element);
     }
 
-    for (auto element : s)
+    for (auto element : arr)
     {
         int parent = element - 1;
         if (s.find(parent) == s.end())
         {
             int next_no = element + 1;
-            int cnt = 1;
-
+            int count = 1;
             while (s.find(next_no) != s.end())
             {
                 next_no++;
-                cnt++;
+                count++;
             }
-            if (cnt > largest_band)
+            if (count > largest_band)
             {
-                largest_band = cnt;
+                largest_band = count;
             }
         }
     }
