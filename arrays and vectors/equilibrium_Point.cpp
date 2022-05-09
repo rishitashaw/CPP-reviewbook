@@ -6,33 +6,31 @@ int equilibriumPoint(long long a[], int n)
 {
 
     // Your code here
-    int equilibriumPoint = n / 2;
-    if (n < 2)
+    int sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        return 0;
+        sum += a[i];
     }
-    int is1 = 0;
-    int is2 = 0;
 
-    int left = accumulate(a, a + equilibriumPoint - 1, is1);
-    int right = accumulate(a + equilibriumPoint + 1, a + n, is2);
+    if (n == 1)
+        return 1;
 
-    while (left != right)
+    if (n == 2)
+        return -1;
+
+    int ls = 0;
+    int rs = 0;
+    for (int i = 1; i < n - 1; i++)
     {
-        if (left > right)
+        ls = ls + a[i];
+        rs = sum - ls - a[i + 1];
+        if (ls == rs)
         {
-            equilibriumPoint = equilibriumPoint - 1;
-            left = accumulate(a, a + equilibriumPoint - 1, is1);
-            right = accumulate(a + equilibriumPoint + 1, a + n, is2);
-        }
-        else
-        {
-            equilibriumPoint = equilibriumPoint + 1;
-            left = accumulate(a, a + equilibriumPoint - 1, is1);
-            right = accumulate(a + equilibriumPoint + 1, a + n, is2);
+            return i + 1;
         }
     }
-    return equilibriumPoint;
+
+    return -1;
 }
 
 int main()
