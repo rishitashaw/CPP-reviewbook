@@ -45,57 +45,6 @@ void insertInMiddle(node *head, int data, int pos)
     }
 }
 
-node *midPoint(node *head)
-{
-    node *slow = head;
-    node *fast = head->next;
-
-    while (fast != NULL and fast->next != NULL)
-    {
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-    return slow;
-}
-
-node *merge(node *list1, node *list2)
-{
-    if (list1 == NULL)
-        return list2;
-
-    if (list2 == NULL)
-        return list1;
-
-    node *c;
-    if (list1->data < list2->data)
-    {
-        c = list1;
-        c->next = merge(list1->next, list2);
-    }
-    else
-    {
-        c = list2;
-        c->next = merge(list2->next, list1);
-    }
-    return c;
-}
-
-node *merge_sort(node *head)
-{
-    if (head == NULL or head->next == NULL)
-    {
-        return head;
-    }
-    node *mid = midPoint(head);
-    node *list1 = head;
-    node *list2 = mid->next;
-    mid->next = NULL;
-
-    list1 = merge_sort(list1);
-    list2 = merge_sort(list2);
-    return merge(list1, list2);
-}
-
 void printLL(node *head)
 {
     while (head != NULL)
@@ -104,6 +53,34 @@ void printLL(node *head)
         head = head->next;
     }
     cout << endl;
+}
+
+void deleteNode(node *head, int m, int n)
+{
+    node *current = head;
+    node *t;
+
+    while (current != NULL)
+    {
+        for (int count = 1; count < m and current != NULL; count++)
+        {
+            current = current->next;
+        }
+        if (current != NULL)
+        {
+            return;
+        }
+
+        t = current->next;
+        for (int count = 1; count < n and t != NULL; count++)
+        {
+            node *temp = t;
+            t = t->next;
+            free(temp);
+        }
+        current->next = t;
+        current = t;
+    }
 }
 
 int main()
@@ -119,7 +96,8 @@ int main()
     insertAtHead(head, 8);
     insertAtHead(head, 9);
     insertAtHead(head, 10);
-    merge_sort(head);
+    insertInMiddle(head, 11, 5);
+    deleteNode(head, 2, 2);
     printLL(head);
     return 0;
 }

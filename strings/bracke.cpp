@@ -5,8 +5,7 @@ using namespace std;
 int findMaxLen(string s)
 {
     // code here
-    vector<char> v;
-    
+    vector<ch ar> v;
 }
 
 int main()
