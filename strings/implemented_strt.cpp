@@ -4,42 +4,18 @@ using namespace std;
 
 int strstr1(string s, string x)
 {
-    int i = s.length();
-    int j = x.length();
-    bool isSubset;
-    while (i >= 0 and j >= 0)
+    // Your code here
+    int n = s.length();
+    int m = x.length();
+
+    int i = 0;
+    int j = 0;
+
+    string temp = "";
+    while (temp.length() != m)
     {
-        if (s[i] == x[j])
-        {
-            i--;
-            j--;
-        }
-        else
-        {
-            i--;
-        }
-    }
-    if (j == -1)
-    {
-        isSubset = true;
-    }
-    isSubset = false;
-    if (isSubset == false)
-    {
-        return -1;
-    }
-    if (isSubset == true)
-    {
-        for (int i = 0; i < s.length(); i++)
-        {
-            for (int j = 0; j < x.length(); j++)
-            {
-                if (s[i] == x[j])
-                {
-                    return i;
-                }
-            }
-        }
+        temp.push_back(s[i]);
+        i++;
     }
 }
 
