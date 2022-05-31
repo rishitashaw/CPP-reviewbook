@@ -16,17 +16,17 @@ public:
     }
 };
 
-class Trie
+class SuffixTrie
 {
     Node *root;
 
 public:
-    Trie()
+    SuffixTrie()
     {
         root = new Node('\0');
     }
 
-    void insert(string word)
+    void insert_helper(string word)
     {
         Node *temp = root;
 
@@ -55,22 +55,26 @@ public:
         }
         return temp->isTerminal;
     };
+
+    void insert(string word)
+    {
+        for (int i = 0; word[i] != '\0'; i++)
+        {
+            insert_helper(word.substr(i));
+        }
+    }
 };
 
 int main()
 {
-    string words[] = {"applet", "ape", "no", "news", "not", "never"};
-    Trie t;
-    for (auto w : words)
-    {
-        t.insert(w);
-    }
+    string input = "hello";
 
-    vector<string> queries = {"applet", "ape", "no", "news", "not"};
-
-    for (int i = 0; i < queries.size(); i++)
+    string suffix[] = {"ello", "lo"};
+    SuffixTrie t;
+    t.insert(input);
+    for (int i = 0; i < input.size(); i++)
     {
-        if (t.search(queries[i]))
+        if (t.search(suffix[i]))
         {
             cout << "Found query" << endl;
         }

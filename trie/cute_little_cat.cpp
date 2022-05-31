@@ -18,9 +18,9 @@ public:
 
 class Trie
 {
+public:
     Node *root;
 
-public:
     Trie()
     {
         root = new Node('\0');
@@ -41,42 +41,35 @@ public:
         }
         temp->isTerminal = true;
     };
-    bool search(string word)
-    {
-        Node *temp = root;
-
-        for (char ch : word)
-        {
-            if (temp->m.count(ch) == 0)
-            {
-                return 0;
-            }
-            temp = temp->m[ch];
-        }
-        return temp->isTerminal;
-    };
 };
 
-int main()
+void searchHelper(Trie t, string document, int i, unordered_map<string, bool> &m)
 {
-    string words[] = {"applet", "ape", "no", "news", "not", "never"};
+    Node *temp = t.root;
+    for (int j = 0; j < document.length(); j++)
+    {
+        char ch = document[j];
+    }
+}
+
+void documentSearch(string document, vector<string> words)
+{
     Trie t;
     for (auto w : words)
     {
         t.insert(w);
     }
 
-    vector<string> queries = {"applet", "ape", "no", "news", "not"};
-
-    for (int i = 0; i < queries.size(); i++)
+    unordered_map<string, bool> m;
+    for (int i = 0; i < document.length(); i++)
     {
-        if (t.search(queries[i]))
-        {
-            cout << "Found query" << endl;
-        }
-        else
-        {
-            cout << "No query found" << endl;
-        }
+        searchHelper(t, document, i, m);
     }
+}
+int main()
+{
+    string input = "hello motherfucker";
+
+    vector<string> words = {"ello", "lo"};
+    Trie t;
 }
